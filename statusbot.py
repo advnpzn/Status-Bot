@@ -10,7 +10,6 @@ ADMIN_USER_ID = os.environ.get("admin_userid","")
 def insult(update: Update, context: CallbackContext) -> None:
   insult = requests.get(INSULT_URL).json()
   update.message.reply_text(insult['insult'],quote=False)
-  update.message.reply_text(update.message.from_user.id)
 
 def status(update: Update , context: CallbackContext) -> None:
     update.message.reply_text("{}\n{}".format(STATUS_MSG,PM_STATUS))
@@ -36,7 +35,7 @@ def set(update: Update , context: CallbackContext) -> None:
         update.message.reply_text("You don't have enough Credentials to Use this Command!")
 
 def help(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text("See the status of what @ATPnull is doing right now!\nYou get BLOCKED if you disturb while \nHe's doing concentrating on other stuff.\nSo, PM him only if he's Free.\ni.e. When the PM status is ✅\nDon't PM when the PM status is ❌\nPress /status to get started\nHave a Nice Day :)")
+    update.message.reply_text("See the status of what @ATPnull is doing right now!\nYou get BLOCKED if you disturb while \nHe's doing concentrating on other stuff.\nSo, PM him only if he's Free.\ni.e. When the PM status is ✅\nDon't PM when the PM status is ❌\nPress /status to get started\nHave a Nice Day :)\nIf you want to setup a bot like this for yourself , check out,\nhttps://github.com/adenosinetp10/Status-Bot")
 
 def pmSTATS(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
