@@ -10,6 +10,7 @@ ADMIN_USER_ID = os.environ.get("admin_userid")
 def insult(update: Update, context: CallbackContext) -> None:
   insult = requests.get(INSULT_URL).json()
   update.message.reply_text(insult['insult'],quote=False)
+  update.message.reply_text(update.message.from_user.id)
 
 def status(update: Update , context: CallbackContext) -> None:
     update.message.reply_text("{}\n{}".format(STATUS_MSG,PM_STATUS))
