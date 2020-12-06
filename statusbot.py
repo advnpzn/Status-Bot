@@ -5,7 +5,7 @@ import os
 INSULT_URL = os.environ.get("insult_url","")
 STATUS_MSG = "Status : NONE"
 PM_STATUS = "Can you PM me? : Not Yet Decided"
-ADMIN_USER_ID = os.environ.get("admin_userid")
+ADMIN_USER_ID = os.environ.get("admin_userid","")
 
 def insult(update: Update, context: CallbackContext) -> None:
   insult = requests.get(INSULT_URL).json()
@@ -25,7 +25,7 @@ def set(update: Update , context: CallbackContext) -> None:
                         ]
                     ]
                     )
-    if update.message.from_user.id == ADMIN_USER_ID:
+    if str(update.message.from_user.id) == ADMIN_USER_ID:
         word = ""
         for i in range ( 0, len(context.args), 1 ):
             word = word + "{} ".format(context.args[i])
